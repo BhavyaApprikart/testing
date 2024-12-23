@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            console.log("User Agent:", userAgent);
+            
+            const url = "https://xplr.live/p2bdafhuw";
+            const playstore = "https://play.google.com/store/apps/details?id=com.xircular.xplorecampaign&campaignId=043a10ed-79c6-4b3d-8c16-7ab9d72e96d8&launch=true";
+            const appcliplink = "https://appclip.apple.com/id?p=com.xircular.XplorePromote.Clip&campaignId=043a10ed-79c6-4b3d-8c16-7ab9d72e96d8";
+
+            if (/Instagram/i.test(userAgent)) {
+                if (/android/i.test(userAgent)) {
+                    // Redirect for Android using intent scheme
+                    window.location.href = `intent:${playstore}#Intent;package=com.android.chrome;end`;
+                } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
+                    // Attempt to open the App Clip link directly in Safari
+                    setTimeout(() => {
+                        window.location.href = appcliplink;
+                    }, 100);
+                } else {
+                    // Handle other platforms
+                    alert("Other platform detected.");
+                    window.location.href = url;
+                }
+            } else {
+                // Redirect to the URL directly for non-Instagram browsers
+                window.location.href = url;
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Redirecting...</h1>
+    <h2>I should not see this screen</h2>
+</body>
+</html>
